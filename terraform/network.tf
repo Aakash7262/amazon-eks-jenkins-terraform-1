@@ -107,7 +107,7 @@ resource "aws_nat_gateway" "nat-gw" {
 resource "aws_route" "nat-gw-route" {
   route_table_id         = "${aws_route_table.private-route-table.id}"
   nat_gateway_id         = "${aws_nat_gateway.nat-gw.id}"
-  destination_cidr_block = "0.0.0.0/0"
+  destination_cidr_block = "10.1.1.16/28"
 }
 resource "aws_internet_gateway" "development-igw" {
   vpc_id = "${aws_vpc.development-vpc.id}"
@@ -118,6 +118,6 @@ resource "aws_internet_gateway" "development-igw" {
 resource "aws_route" "public-internet-igw-route" {
   route_table_id         = "${aws_route_table.public-route-table.id}"
   gateway_id             = "${aws_internet_gateway.development-igw.id}"
-  destination_cidr_block = "0.0.0.0/0"
+  destination_cidr_block = "10.1.1.0/24"
 }
 
