@@ -91,7 +91,7 @@ resource "aws_route_table_association" "private-route-3-association" {
 }
 resource "aws_eip" "elastic-ip-for-nat-gw" {
   vpc                       = true
-  associate_with_private_ip = "10.0.0.5"
+  associate_with_private_ip = "10.1.1.39"
   tags = {
     Name = "${var.environment}-EIP"
   }
